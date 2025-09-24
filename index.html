@@ -75,6 +75,23 @@
       position: relative;
       z-index: 10;
     }
+    .audio-control {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: #15803d;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .audio-control:hover {
+      background: #16a34a;
+    }
     @media (max-width: 768px) {
       .star {
         font-size: clamp(0.8rem, 2vw, 1rem);
@@ -97,6 +114,11 @@
         padding: 0.5rem 1rem;
         font-size: clamp(0.9rem, 3.5vw, 1rem);
       }
+      .audio-control {
+        top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+      }
     }
     @media (max-width: 480px) {
       .side-gif {
@@ -107,6 +129,10 @@
       }
       .star:nth-child(3), .star:nth-child(4) {
         display: none; /* Hide some stars on very small screens */
+      }
+      .audio-control {
+        top: 0.3rem;
+        padding: 0.3rem 0.6rem;
       }
     }
   </style>
@@ -135,8 +161,27 @@
   <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzZvZjkyaGpsaXhkNGd2bzY5d254Nmc4aG5zOGg0emxrc2xsaHI0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fvN5KrNcKKUyX7hNIA/giphy.gif" alt="Heart GIF" class="side-gif gif-top-left" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
   <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3dxb2tjZ3lzcnRyNWVmM3phenIwZGxwcXQydXdyOHNnbHoyMm44cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0kkmQ5Mxp3NG5nhzT0/giphy.gif" alt="Cute Animal GIF" class="side-gif gif-bottom-left" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
   <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnRocWFhdzI3MzB3YnIxNmFsMDYyN2Q2ODZrdTBxdXhhamdydmFyMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/DC58RFuy70y7vrAbYQ/giphy.gif" alt="Sparkle GIF" class="side-gif gif-bottom-right" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
+  <!-- Audio -->
+  <audio id="backgroundMusic" loop autoplay>
+    <source src="cute_sticker_bg.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button id="audioControl" class="audio-control">Pause Music 🎶</button>
 
   <script>
+    const audio = document.getElementById('backgroundMusic');
+    const audioControl = document.getElementById('audioControl');
+    
+    audioControl.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        audioControl.textContent = 'Pause Music 🎶';
+      } else {
+        audio.pause();
+        audioControl.textContent = 'Play Music 🎶';
+      }
+    });
+
     document.getElementById('showMessage').addEventListener('click', () => {
       const extraMessage = document.getElementById('extraMessage');
       extraMessage.classList.toggle('hidden');
