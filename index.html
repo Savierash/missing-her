@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Miss You So Much</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background: linear-gradient(135deg, #2e4f2f, #4a7043);
+      overflow-x: hidden;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+    .heart {
+      animation: heartbeat 0.8s infinite;
+    }
+    .bounce {
+      animation: bounce 2s infinite;
+    }
+    .star {
+      position: absolute;
+      color: #d4a017;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      animation: twinkle 1.5s infinite;
+      z-index: 1; /* Stars behind GIFs */
+    }
+    .star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+    .star:nth-child(3) { bottom: 15%; left: 30%; animation-delay: 1s; }
+    .star:nth-child(4) { bottom: 20%; right: 25%; animation-delay: 0.3s; }
+    .side-gif {
+      position: absolute;
+      max-width: clamp(80px, 20vw, 120px);
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2; /* GIFs above stars */
+    }
+    .gif-top-right { top: 1rem; right: 1rem; }
+    .gif-top-left { top: 1rem; left: 1rem; }
+    .gif-bottom-left { bottom: 1rem; left: 1rem; }
+    .gif-bottom-right { bottom: 1rem; right: 1rem; }
+    .content-box {
+      background: white;
+      padding: clamp(1rem, 5vw, 2.5rem);
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 90%;
+      width: clamp(300px, 80vw, 450px);
+      border: 4px solid #15803d;
+      position: relative;
+      z-index: 10;
+    }
+    @media (max-width: 768px) {
+      .star {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+      }
+      .side-gif {
+        max-width: clamp(60px, 15vw, 80px);
+      }
+      .gif-top-right, .gif-top-left { top: 0.5rem; }
+      .gif-bottom-right, .gif-bottom-left { bottom: 0.5rem; }
+      h1 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+      p {
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+      }
+      .text-6xl {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+      button {
+        padding: 0.5rem 1rem;
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+      }
+    }
+    @media (max-width: 480px) {
+      .side-gif {
+        max-width: clamp(50px, 12vw, 60px);
+      }
+      .content-box {
+        padding: clamp(0.8rem, 4vw, 1.5rem);
+      }
+      .star:nth-child(3), .star:nth-child(4) {
+        display: none; /* Hide some stars on very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="star">✨</div>
+  <div class="star">✨</div>
+  <div class="star">✨</div>
+  <div class="star">✨</div>
+  <div class="content-box">
+    <h1 class="text-4xl font-bold text-green-700 mb-4 bounce"> Asarin mo lang ako!,My love 🐻💕</h1>
+    <p class="text-lg text-gray-600 mb-6">
+      Hi Emil, lala namimiss kita sobra ,pero syempre dapat maangas lang ,kupal ako eh.  🌸✨
+    </p>
+    <div class="text-6xl text-red-400 heart mb-6">💖</div>
+    <button id="showMessage" class="bg-green-600 text-white px-5 py-3 rounded-full hover:bg-green-700 transition text-lg font-semibold">
+      A Super Cute Surprise! 🦄
+    </button>
+    <p id="extraMessage" class="text-gray-500 mt-4 hidden text-lg">
+      P.S. Lam mo ba I can't explain what I'm feeling, but I just miss you so much, and kahit na nahihiya ako sayo syempre kukupalin na kita next time.
+      And sana magawa ko mga Assignments ko ,para ma kiss hahahahahahaha watdahil labyu mwaahh 🌟😘
+    </p>
+  </div>
+  <!-- GIFs -->
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3JoNHNzcDdlamp5NmsyMjEzODE4MjY4ZzdnaHZhNGg2dDQ0dXE5NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/N1KEqyckEwtHYQtnGu/giphy.gif" alt="Cute GIF" class="side-gif gif-top-right" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzZvZjkyaGpsaXhkNGd2bzY5d254Nmc4aG5zOGg0emxrc2xsaHI0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fvN5KrNcKKUyX7hNIA/giphy.gif" alt="Heart GIF" class="side-gif gif-top-left" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3dxb2tjZ3lzcnRyNWVmM3phenIwZGxwcXQydXdyOHNnbHoyMm44cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0kkmQ5Mxp3NG5nhzT0/giphy.gif" alt="Cute Animal GIF" class="side-gif gif-bottom-left" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnRocWFhdzI3MzB3YnIxNmFsMDYyN2Q2ODZrdTBxdXhhamdydmFyMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/DC58RFuy70y7vrAbYQ/giphy.gif" alt="Sparkle GIF" class="side-gif gif-bottom-right" onerror="this.alt='GIF failed to load'; this.style.border='2px solid red';">
+
+  <script>
+    document.getElementById('showMessage').addEventListener('click', () => {
+      const extraMessage = document.getElementById('extraMessage');
+      extraMessage.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
